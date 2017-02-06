@@ -24,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rails-controller-testing'
 end
 
 group :development do
