@@ -1,30 +1,7 @@
+<% provide(:url_path, signup_path) %>
+<% provide(:button_text, 'Create my account') %>
+
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
 
-<%= form_for(@user, url: signup_path) do |f| %>
-  <%= render 'shared/error_messages' %>
-
-  <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Create my account" %>
-  </div>
-<% end %>
+<%= render 'form' %>
