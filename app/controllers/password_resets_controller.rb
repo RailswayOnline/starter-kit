@@ -1,4 +1,7 @@
 class PasswordResetsController < ApplicationController
+  before_action :set_user,   only: [:edit]
+  before_action :valid_user, only: [:edit]
+
   def new
   end
 
@@ -16,5 +19,18 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def set_user
+    @user = User.find_by(email: params[:email])
+  end
+
+  # Confirms a valid user.
+  def valid_user
+    unless @user && @user.activated? && @user.authenticated?(:reset, params[:id])
+      redirect_to root_path
+    end
   end
 end
