@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'users#new'
+
   resources :users
   get    '/signup', to: 'users#new'
   post   '/signup', to: 'users#create'
@@ -8,6 +10,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :account_activations, only: [:edit]
-
-  root 'users#new'
+  resources :password_resets,     only: [:new, :edit]
 end
